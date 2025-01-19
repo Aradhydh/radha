@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: #333;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button#yes {
+            background-color: #4caf50;
+            color: white;
+        }
+        button#no {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Do you love me?</h1>
+    <div class="buttons">
+        <button id="yes">Yes</button>
+        <button id="no">No</button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById("no");
+        const yesButton = document.getElementById("yes");
+
+        function getRandomPosition() {
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+            const buttonWidth = noButton.offsetWidth;
+            const buttonHeight = noButton.offsetHeight;
+
+            const randomX = Math.floor(Math.random() * (screenWidth - buttonWidth));
+            const randomY = Math.floor(Math.random() * (screenHeight - buttonHeight));
+
+            return { x: randomX, y: randomY };
+        }
+
+        noButton.addEventListener("mouseenter", () => {
+            const position = getRandomPosition();
+            noButton.style.left = `${position.x}px`;
+            noButton.style.top = `${position.y}px`;
+        });
+
+        yesButton.addEventListener("click", () => {
+            alert("I love you too! ❤️");
+        });
+
+        noButton.addEventListener("click", () => {
+            alert("Why would you even try clicking No?");
+        });
+    </script>
+</body>
+</html>
+
+
